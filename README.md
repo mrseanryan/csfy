@@ -1,4 +1,4 @@
-# classifier trainer
+# csfy: A simple text-classifier trainer [ONNX][optimized][language neutral]
 
 Train a simple and fast text classifier, based on [DistilBERT](https://huggingface.co/distilbert/distilbert-base-uncased).
 
@@ -152,7 +152,7 @@ Chat mode: (interactive loop)
 poetry csfy predict <path to model> <text> --chat
 ```
 
-## Optional ONNX conversion [optimization][language neutral]
+## Optional ONNX conversion [optimized][language neutral]
 
 1. Export to ONNX format
 
@@ -189,6 +189,8 @@ poetry csfy predict <path to ONNX model> <text>
 [alpaca](https://huggingface.co/datasets/tatsu-lab/alpaca)
 
 ### Toxic
+
+Useful for training a classifier that detects toxic text/prompts:
 
 [harmful_behaviors](https://huggingface.co/datasets/mlabonne/harmful_behaviors)
 
