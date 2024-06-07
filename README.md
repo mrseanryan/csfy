@@ -24,7 +24,7 @@ Key points about BERT (the base model of DistilBERT):
 
 In this example, we train against a data set that has texts with labels.
 
-The data looks like this:
+The data is stored in a parquet file, and looks like this:
 
 | text | label |
 |---|---|
@@ -56,12 +56,18 @@ Results are at ./models/run-1
 [time taken: 0:01:00s]
 ```
 
+notes on the training output:
+
+- the model is written to `trained.model` under the configured output folder (see 'OUTPUT_DIR' in `config.ini`)
+- the training results are written to `results.json`
+- the label mappings are written to `label_mapping.json`
+
 ## Predicting a label using the new model
 
-Now we use the trained model to take unseen text, and predict a label.
+Now we can use the trained model to take unseen text, and predict a label.
 
 ```
-poetry run csfy predict ./models/run-1/trained.model    "what is this" --chat
+poetry run csfy predict ./models/run-1/trained.model "what is this" --chat
 ```
 
 ```
@@ -78,9 +84,11 @@ NL
 
 # Setup
 
-1. Install [poetry](https://python-poetry.org/docs#installation)
+1. Install Python 3.11
 
-2. Use poetry
+2. Install [poetry](https://python-poetry.org/docs#installation)
+
+3. Use poetry to install dependencies
 
 ```shell
 poetry install
@@ -95,12 +103,17 @@ poetry run csfy
 ```
 
 1. Prepare the dataset
+
+- you need a parquet file with 2 'string' columns: a text column and a label column
+
 2. Edit `config.ini` to suit your environment
-- The dataset should be in parquet format and have 2 columns as set in config.ini: `COLUMN_TEXT` and `COLUMN_LABEL`
+- the column names are set in config.ini and can be changed to match your parquet file: `COLUMN_TEXT` and `COLUMN_LABEL`
+
 3. Train
 ```shell
 poetry csfy train <path to input.parquet>
 ```
+
 4. Test (Predict)
 ```shell
 poetry csfy predict <path to model> <text>
