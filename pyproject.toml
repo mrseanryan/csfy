@@ -22,6 +22,7 @@ package-mode = false
 click = "~=8.1"
 cornsnake = "~=0.0.64"
 datasets = "~=2.19.2"
+onnx = "~=1.16.1"
 onnxruntime = "~=1.18.0"
 pandas = "~=2.2.2"
 python = "^3.11"
