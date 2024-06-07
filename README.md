@@ -102,6 +102,33 @@ To see the built-in help:
 poetry run csfy
 ```
 
+OUTPUT:
+
+```
+Usage: csfy [OPTIONS] COMMAND [ARGS]...
+
+  csfy (classify) is a command line tool to train and run simple text based
+  classifiers.
+
+  - for help about each command, add --help. for example:
+
+      csfy train --help
+
+Options:
+  -v, --verbose  Enables verbose mode.
+  --help         Show this message and exit.
+
+Commands:
+  export    Exports a model previously created via the 'train' command, to
+            ONNX format.
+  predict   Predicts a labal for the given text, using a model previously
+            created via the 'train' command.
+  quantize  Quantize an existing ONNX model to reduce size and inference time
+            whilst mostly preserving accuracy. The quantization level can one
+            of: ['q_8', 'q_u8', 'q_f8', 'q_16', 'q_u16'].
+  train     Trains a model to classify text, predicting a label.
+```
+
 1. Prepare the dataset
 
 - you need a parquet file with 2 'string' columns: a text column and a label column
