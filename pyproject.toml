@@ -1,0 +1,58 @@
+[tool.poetry]
+name = "csfy"
+version = "0.0.1"
+description = "A simple classifier training tool to create light-weight text classifiers"
+authors = ["Sean Ryan"]
+license = "MIT"
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+click = "~=8.1"
+cornsnake = "~=0.0.64"
+datasets = "~=2.19.2"
+onnxruntime = "~=1.18.0"
+pandas = "~=2.2.2"
+python = "^3.11"
+scikit-learn = "~=1.5.0"
+torch = {extras = ["--no-binary"], version = "~=2.3.1"}
+transformers = {extras = ["torch", "--no-binary"], version = "^4.41.2"}
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+csfy = "csfy.cli:start"
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint.pylint]
+max-args = 7
+
+[tool.coverage.run]
+omit = [
+    # omit anything in a .local directory anywhere
+    '*/.local/*',
+    '__init__.py',
+    'tests/*',
+    '*/tests/*',
+    # omit anything in a .venv directory anywhere
+    '.venv/*'
+]
+
+[tool.coverage.report]
+skip_empty = true
