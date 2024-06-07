@@ -18,6 +18,64 @@ Key points about BERT (the base model of DistilBERT):
 > pretrained on the raw texts only, with no humans labeling them in any way (which is why it can use lots of publicly available data)
 > the model learns an inner representation of the English language that can then be used to extract features useful for downstream tasks: if you have a dataset of labeled sentences, for instance, you can train a standard classifier using the features produced by the BERT model as inputs
 
+# Example Run
+
+## Training a new classifier
+
+In this example, we train against a data set that has texts with labels.
+
+The data looks like this:
+
+| text | label |
+|---|---|
+| where is the cinema? | NL |
+| var x = 123; | code |
+
+
+```
+poetry run csfy train ./data/combined_labelled_is_NL.parquet
+```
+
+```
+Training model from data at C:\src\github\csfy\data\combined_labelled_is_NL.parquet
+=== === ===     [1] Reading input parquet       === === ===
+58450 rows of data
+WARNING:  - truncated to 100 rows
+Saving label mapping to ./models/run-1\label_mapping.json
+Map: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 877.20 examples/s]
+Some weights of DistilBertForSequenceClassification were not initialized from the model checkpoint at distilbert-base-uncased and are newly initialized: ['classifier.bias', 'classifier.weight', 'pre_classifier.bias', 'pre_classifier.weight']
+=== === ===     [2] Training    === === ===
+{'eval_loss': 0.5119398832321167, 'eval_runtime': 4.7181, 'eval_samples_per_second': 4.239, 'eval_steps_per_second': 0.212, 'epoch': 1.0}                                                                                                                    
+{'train_runtime': 53.3733, 'train_samples_per_second': 1.499, 'train_steps_per_second': 0.094, 'train_loss': 0.6224897861480713, 'epoch': 1.0}                                                                                                                
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 5/5 [00:53<00:00, 10.67s/it] 
+Saving model to ./models/run-1\trained.model
+=== === ===     [3] Evaluating  === === ===
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<?, ?it/s]
+{'eval_loss': 0.5119398832321167, 'eval_runtime': 4.6233, 'eval_samples_per_second': 4.326, 'eval_steps_per_second': 0.216, 'epoch': 1.0}
+Results are at ./models/run-1
+[time taken: 0:01:00s]
+```
+
+## Predicting a label using the new model
+
+Now we use the trained model to take unseen text, and predict a label.
+
+```
+poetry run csfy predict ./models/run-1/trained.model    "what is this" --chat
+```
+
+```
+Loading label mapping from C:\src\github\csfy\models\run-1\label_mapping.json
+[time taken: 0:00:00s]
+Predicted label: 'NL' - for 'what is this'
+How can I help? [to exit, type 'bye' and press ENTER] >> [default is ] >var x = 123
+[time taken: 0:00:00s]
+code
+How can I help? [to exit, type 'bye' and press ENTER] >> [default is ] >how do I get to the beach?
+[time taken: 0:00:00s]
+NL
+```
+
 # Setup
 
 1. Install [poetry](https://python-poetry.org/docs#installation)
@@ -80,6 +138,7 @@ poetry csfy predict <path to ONNX model> <text>
 
 - `poetry run csfy` does not list any commands
   - try running `poetry install` again or `poetry lock`
+  - try running poetry in verbose mode: `poetry run --verbose csfy`
 
 # Example datasets
 
