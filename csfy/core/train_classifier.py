@@ -16,7 +16,7 @@ def _save_results(results):
 def train(path_to_input_parquet):
     if os.path.exists(util_config.path_to_results()):
         util_print.print_warning("Results directory already exists - safer to adjust 'OUTPUT_DIR' in config.ini")
-        do_continue = util_input.input_with_format_y_or_n("Do you wish to continue?", "Y")
+        do_continue = util_input.input_with_format_y_or_n("Do you wish to continue?", "N")
         if not do_continue:
             print("(exiting)")
             return
