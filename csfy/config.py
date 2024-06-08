@@ -16,6 +16,11 @@ TRUNCATE_DATA_ROWS = 0 # set to a number to truncate the rows of data used for t
 ### ========= export command =========
 EXAMPLE_USER_PROMPT = "How do I get to the beach?"  # edit this to match your data: for example, matching one text value
 
+## ========== serve command =========
+SERVE_HOST = 'localhost'
+SERVE_PORT = 8084
+SERVE_MODEL_PATH = '' # The path to the previously trained model. Can also set from command line
+
 ### ========= shared =========
 BASE_MODEL = 'distilbert-base-uncased'
 TOKENIZER = 'distilbert-base-uncased'

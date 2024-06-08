@@ -22,13 +22,16 @@ package-mode = false
 click = "~=8.1"
 cornsnake = "~=0.0.64"
 datasets = "~=2.19.2"
+fastapi = "~=0.109.0"
 onnx = "~=1.16.1"
 onnxruntime = "~=1.18.0"
 pandas = "~=2.2.2"
+pydantic = "~=2.6.4"
 python = "^3.11"
 scikit-learn = "~=1.5.0"
 torch = {extras = ["--no-binary"], version = "~=2.3.1"}
 transformers = {extras = ["torch", "--no-binary"], version = "^4.41.2"}
+uvicorn = "~=0.26.0"
 
 [build-system]
 requires = ["poetry-core"]
