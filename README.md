@@ -5,6 +5,7 @@ Train a simple and fast text classifier, based on [DistilBERT](https://huggingfa
 - much faster and lighter than an LLM
 - fully configurable, including the base model
 - can train on data that has multiple custom labels
+- can serve label prediction requests via an OpenAPI REST API
 
 Key points about the base model:
 
@@ -126,6 +127,8 @@ Commands:
   quantize  Quantize an existing ONNX model to reduce size and inference time
             whilst mostly preserving accuracy. The quantization level can one
             of: ['q_8', 'q_u8', 'q_f8', 'q_16', 'q_u16'].
+  serve     Serve model via a REST API that can accept requests to predict a
+            label for given text.
   train     Trains a model to classify text, predicting a label.
 ```
 
@@ -171,6 +174,14 @@ poetry quantize <path to ONNX model> <path to output ONNX model> <quantization l
 ```shell
 poetry csfy predict <path to ONNX model> <text>
 ```
+
+## Serve label prediction requests with REST API (with Open API spec)
+
+```shell
+poetry csfy serve <path to model>
+```
+
+![Serve REST API](./images/screenshot_serve_api.png)
 
 # Troubleshooting
 
