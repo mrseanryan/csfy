@@ -16,7 +16,6 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 readme = "README.md"
-package-mode = false
 
 [tool.poetry.dependencies]
 click = "~=8.1"
