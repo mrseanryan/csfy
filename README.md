@@ -192,6 +192,16 @@ poetry csfy predict <path to ONNX model> <text>
 
 Useful for training a classifier that detects toxic text/prompts:
 
+1. Combined labelled texts
+
+Labelled text - sourced from alpaca, tweets and some synthetic examples.
+
+labels are: [neutral, offensive_language, harmful_behaviour, hate_speech]
+
+[labelled text](https://huggingface.co/datasets/seanius/toxic-or-neutral-text-labelled/tree/main)
+
+2. Harmful requests to an LLM
+
 [harmful_behaviors](https://huggingface.co/datasets/mlabonne/harmful_behaviors)
 
 ### Other
