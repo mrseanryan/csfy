@@ -167,3 +167,4 @@ models
 notebooks
 poetry.lock
 .python-version
+temp

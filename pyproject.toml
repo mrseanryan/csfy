@@ -20,7 +20,7 @@ package-mode = false
 
 [tool.poetry.dependencies]
 click = "~=8.1"
-cornsnake = "~=0.0.64"
+cornsnake = "~=0.0.65"
 datasets = "~=2.19.2"
 fastapi = "~=0.109.0"
 onnx = "~=1.16.1"
