@@ -212,7 +212,7 @@ Useful for training a classifier that detects toxic text/prompts:
 
 1. Combined labelled texts
 
-Labelled text - sourced from alpaca, tweets and some synthetic examples.
+Labelled text - sourced from toxic tweets and some synthetic examples.
 
 labels are: [neutral, offensive_language, harmful_behaviour, hate_speech]
 
@@ -221,6 +221,10 @@ labels are: [neutral, offensive_language, harmful_behaviour, hate_speech]
 2. Harmful requests to an LLM
 
 [harmful_behaviors](https://huggingface.co/datasets/mlabonne/harmful_behaviors)
+
+3. Toxic tweets with hate or offensive language
+
+[hate-speech-and-offensive-language-dataset](https://www.kaggle.com/datasets/mrmorj/hate-speech-and-offensive-language-dataset)
 
 ### Other
 
