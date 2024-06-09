@@ -43,7 +43,7 @@ class CsfyCLI(click.Group):
             mod = __import__(f"csfy.commands.cmd_{name}", None, None, ["cli"])
         except ImportError as ie:
             util_log.log_exception(ie)
-            return
+            return None
         return mod.cli
 
 

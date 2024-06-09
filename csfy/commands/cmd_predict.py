@@ -1,5 +1,5 @@
 import click
-from cornsnake import util_input, util_print
+from cornsnake import util_color, util_input, util_print
 
 from csfy.core import predictor
 from csfy.cli import pass_environment
@@ -26,7 +26,8 @@ def cli(ctx, path_to_model, text, chat):
     """Predicts a labal for the given text, using a model previously created via the 'train' command."""
     state = predictor.load_state(path_to_model)
     label = predictor.predict_label(text, state)
+    result = util_color.colorize(f"Predicted label: '{label}' - for '{text}'", util_color.RESULT_COLOR)
     # TODO improve logging
-    ctx.log(f"Predicted label: '{label}' - for '{text}'")
+    ctx.log(result)
     if chat:
         _chat(state)
