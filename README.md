@@ -100,8 +100,14 @@ poetry install
 
 To see the built-in help:
 
-```
+```shell
 poetry run csfy
+```
+
+or
+
+```shell
+./go.sh
 ```
 
 OUTPUT:
