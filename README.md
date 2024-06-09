@@ -198,6 +198,14 @@ poetry csfy serve <path to model>
   - try running `poetry install` again or `poetry lock`
   - try running poetry in verbose mode: `poetry run --verbose csfy`
 
+# Example models
+
+1. toxic-or-neutral-text-labelled
+
+This ONNX model was trained via csfy on the [labelled toxic/neutral text](https://huggingface.co/datasets/seanius/toxic-or-neutral-text-labelled/tree/main) dataset:
+
+- https://huggingface.co/seanius/toxic-or-neutral-text-labelled
+
 # Example datasets
 
 ## Natural language
@@ -216,7 +224,7 @@ Labelled text - sourced from toxic tweets and some synthetic examples.
 
 labels are: [neutral, offensive_language, harmful_behaviour, hate_speech]
 
-[labelled text](https://huggingface.co/datasets/seanius/toxic-or-neutral-text-labelled/tree/main)
+[labelled toxic/neutral text](https://huggingface.co/datasets/seanius/toxic-or-neutral-text-labelled/tree/main)
 
 2. Harmful requests to an LLM
 
