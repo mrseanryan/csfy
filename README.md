@@ -237,3 +237,8 @@ labels are: [neutral, offensive_language, harmful_behaviour, hate_speech]
 ### Other
 
 [kaggle](https://www.kaggle.com/search?q=datasets)
+
+# References
+
+- [Training a Sentence Transformer [sbert.net]](https://sbert.net/docs/sentence_transformer/training_overview.html)
+- [Hugging Face docs](https://huggingface.co/docs)
